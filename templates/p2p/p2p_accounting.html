@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>P2P Accounting</title>
+</head>
+<body>
+	<h1>P2P Accounting</h1>
+	<div id = 'options'>
+		
+	</div>
+	<div id = 'main-container'>
+		
+		<div id = 'accounting_enty'>
+			<div id = 'header'> </div>
+			<div id = 'entry'>
+				<table>
+					<tr>
+						<th>Debit or Credit</th>
+						<th>Account Description</th>
+						<th>Entry for</th>
+						<th> Item Type</th>	
+					</tr>
+					{% for entry in p2p_accounting %}
+					<tr>
+						<td>{{entry.dr_cr}}</td>
+						<td>{{entry.account_description}}</td>
+						<td>{{entry.accounting_entry}}</td>
+						<td>{{entry.item_type}}</td>
+					</tr>
+					{% endfor %}
+				</table>	
+			</div>  <!-- id =accounting_entry-->
+		</div>
+		
+	</div>
+</body>
+</html>
