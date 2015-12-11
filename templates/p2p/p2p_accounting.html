@@ -9,10 +9,12 @@
 		{% csrf_token %}
 			<div class="form-group">
 			<h4><span class="label label-default">Item Type</span> </h4>
+			 {% block item_type%}
 			 <select class="form-control">
-				  <option>Expense</option>
+				  <option selected="selected">Expense</option>
 				  <option>Inventory</option>
 			</select>
+			{%endblock%}
 			</div>
 			 <button type="submit" class="btn btn-primary">Submit</button>
 			 </form>
