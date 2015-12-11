@@ -3,6 +3,16 @@
 {% load staticfiles %}
 	{% block title %} P2P Accounting {% endblock %}
 
+	{% block side_block %}
+		<div>
+			<h4><span class="label label-default">Item Type</span> </h4>
+			 <select class="form-control">
+				  <option>Expense</option>
+				  <option>Inventory</option>
+			</select>
+		</div>
+	{% endblock %}
+
 
 {% block body_block %}
 	<h1>P2P Accounting</h1>
