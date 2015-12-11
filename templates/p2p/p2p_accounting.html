@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>P2P Accounting</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+	{% block title %} P2P Accounting {% endblock %}
+
+
+{% block body_block %}
 	<h1>P2P Accounting</h1>
 	<div id = 'options'>
 		
 	</div>
+	
 	<div id = 'main-container'>
 		
 		<div id = 'accounting_enty'>
@@ -15,7 +17,7 @@
 			<div id = 'entry'>
 				<table>
 					<tr>
-						<th>Debit or Credit</th>
+						<th>Debit / Credit</th>
 						<th>Account Description</th>
 						<th>Entry for</th>
 						<th> Item Type</th>	
@@ -33,5 +35,4 @@
 		</div>
 		
 	</div>
-</body>
-</html>
+{% endblock %}
