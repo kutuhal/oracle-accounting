@@ -5,11 +5,16 @@
 
 	{% block side_block %}
 		<div>
+		<form class="form-horizontal" method="post" action="/p2p_accounting/inventory/">
+			<div class="form-group">
 			<h4><span class="label label-default">Item Type</span> </h4>
 			 <select class="form-control">
 				  <option>Expense</option>
 				  <option>Inventory</option>
 			</select>
+			</div>
+			 <button type="submit" class="btn btn-primary">Submit</button>
+			 </form>
 		</div>
 	{% endblock %}
 
