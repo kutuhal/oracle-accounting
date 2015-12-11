@@ -7,4 +7,6 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', views.p2p_accounting, name='p2p_accounting'),
+    url(r'^inventory/', views.inv_accounting, name='inv_accounting'),
+
 ]
