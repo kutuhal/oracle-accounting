@@ -41,10 +41,10 @@
 				 		</div>
 						<table class="table table-bordered table-hover">
 							<tr>
-								<th>Debit / Credit</th>
-								<th>Account Description</th>
-								<th>Entry for</th>
-								<th> Item Type</th>	
+								<th class="col-md-2">Debit / Credit</th>
+								<th class="col-md-5">Account Description</th>
+								<th class="col-md-2">Entry for</th>
+								<th class="col-md-3"> Item Type</th>	
 							</tr>
 							{% for entry in po_receipt_accting %}
 							<tr>
@@ -62,14 +62,56 @@
 					 	</div>
 						<table class="table table-bordered table-hover">
 							<tr>
-								<th>Debit / Credit</th>
-								<th>Account Description</th>
-								<th>Entry for</th>
-								<th> Item Type</th>	
+								<th class="col-md-2">Debit / Credit</th>
+								<th class="col-md-5">Account Description</th>
+								<th class="col-md-2">Entry for</th>
+								<th class="col-md-3"> Item Type</th>
 							</tr>
 							{% for entry in po_deliver_accting %}
 							<tr>
-								<td>{{entry.dr_cr}}</td>
+								<td class="col-md-2">{{entry.dr_cr}}</td>
+								<td>{{entry.account_description}}</td>
+								<td>{{entry.accounting_entry}}</td>
+								<td>{{entry.item_type}}</td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+					<div class="panel panel-info">
+					 	<div class="panel-heading">
+					 		<h3 class="panel-title">AP Invoice</h3>
+					 	</div>
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th class="col-md-2">Debit / Credit</th>
+								<th class="col-md-5">Account Description</th>
+								<th class="col-md-2">Entry for</th>
+								<th class="col-md-3"> Item Type</th>
+							</tr>
+							{% for entry in ap_invoice_accting %}
+							<tr>
+								<td class="col-md-2">{{entry.dr_cr}}</td>
+								<td>{{entry.account_description}}</td>
+								<td>{{entry.accounting_entry}}</td>
+								<td>{{entry.item_type}}</td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+					<div class="panel panel-info">
+					 	<div class="panel-heading">
+					 		<h3 class="panel-title">AP Payment</h3>
+					 	</div>
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th class="col-md-2">Debit / Credit</th>
+								<th class="col-md-5">Account Description</th>
+								<th class="col-md-2">Entry for</th>
+								<th class="col-md-3"> Item Type</th>
+							</tr>
+							{% for entry in ap_payment_accting %}
+							<tr>
+								<td class="col-md-2">{{entry.dr_cr}}</td>
 								<td>{{entry.account_description}}</td>
 								<td>{{entry.accounting_entry}}</td>
 								<td>{{entry.item_type}}</td>
