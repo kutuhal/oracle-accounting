@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,18 +35,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                   {% comment %}
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
-                        <li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
-                        <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
-                    {% else %}
-                        <li><a href="{% url 'registration_register' %}">Register Here</a></li>
-                        <li><a href="{% url 'auth_login' %}">Login</a></li>
-                    {% endif %}
-                                <li><a href="{% url 'about' %}">About</a></li> -->
-                      {% endcomment %}
+                <li><a href="{% url 'home' %}"></a></li>
               </ul>
         </div>
       </div>
@@ -54,7 +44,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-                {% block side_block %}{% endblock %}
+                {% block side_block %}
+                     {%block upper_side_block%}
+                      {%endblock%}
+                        <hr>
+                        
+                        <div class = 'text-center'> With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> from
+                              <br> <h4> Sai Deep Chand G </h4>
+                        </div>
+                {% endblock %}
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

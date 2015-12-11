@@ -3,11 +3,11 @@
 {% load staticfiles %}
 	{% block title %} P2P Accounting {% endblock %}
 
-	{% block side_block %}
+	{% block upper_side_block %}
 		<div>
 		<form class="form-horizontal" method="post" action="/p2p_accounting/inventory/">
 		{% csrf_token %}
-			<div class="form-group">
+			<div class="form-group text-center">
 			<h4><span class="label label-default">Item Type</span> </h4>
 			 {% block item_type%}
 			 <select class="form-control">
@@ -16,7 +16,9 @@
 			</select>
 			{%endblock%}
 			</div>
-			 <button type="submit" class="btn btn-primary">Submit</button>
+				<div class="text-center">
+			 		<button type="submit" class="btn btn-primary text-center">Submit</button>
+			 	</div>
 			 </form>
 		</div>
 	{% endblock %}
