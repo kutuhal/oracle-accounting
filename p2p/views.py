@@ -9,7 +9,7 @@ def p2p_accounting(request):
         form = P2PForm(request.POST)
         if form.is_valid(): # All validation rules pass
             item_type_val = form.cleaned_data ['item_type']
-            print(item_type_val )
+
             period_end_accrual_val = form.cleaned_data ['period_end_accrual']
             print(period_end_accrual_val    )
         else:
@@ -33,11 +33,3 @@ def p2p_accounting(request):
         'ap_invoice_accting':invoice_accting, 'ap_payment_accting':payment_accting,
         'form': form})
 
-def inv_accounting(request):
-    receipt_accting = P2P_accounting.objects.filter( accounting_entry='PO Receipt').filter(item_type='Inventory')
-    deliver_accting = P2P_accounting.objects.filter( accounting_entry='PO Deliver').filter(item_type='Inventory')
-    invoice_accting = P2P_accounting.objects.filter( accounting_entry='AP Invoice')
-    payment_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment')
-    return render(request, 'p2p/inv_accounting.html',
-        {'po_receipt_accting': receipt_accting, 'po_deliver_accting' : deliver_accting,
-        'ap_invoice_accting':invoice_accting, 'ap_payment_accting':payment_accting})
