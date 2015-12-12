@@ -1,117 +1,117 @@
 {% extends 'base.html' %}
 
 {% load staticfiles %}
-	{% block title %} P2P Accounting {% endblock %}
+    {% block title %} P2P Accounting {% endblock %}
 
-	{% block upper_side_block %}
-		<div>
-		<form class="form-horizontal" method="post" action="/p2p_accounting/inventory/">
-		{% csrf_token %}
-			<div class="form-group text-center">
-			<h4><span class="label label-default">Item Type</span> </h4>
-			 {% block item_type%}
-				 <select class="form-control">
-					  <option selected="selected">Expense</option>
-					  <option>Inventory</option>
-				</select>
-			{%endblock%}
-			<h4><span class="label label-default">Period-end Accrual</span></h4>
-				<label class="radio-inline">
-				  	<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
-				</label>
-				<label class="radio-inline">
-				  	<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked="checked" > No
-				</label>
-			</div> <!-- form-group -->
-				<div class="text-center">
-			 		<button type="submit" class="btn btn-primary text-center">Submit</button>
-			 	</div>
-			 </form>
-		</div>
-	{% endblock %}
+    {% block upper_side_block %}
+        <div>
+        <form class="form-horizontal" method="post" action="/p2p_accounting/inventory/">
+        {% csrf_token %}
+            <div class="form-group text-center">
+            <h4><span class="label label-default">Item Type</span> </h4>
+             {% block item_type%}
+                 <select class="form-control">
+                      <option selected="selected">Expense</option>
+                      <option>Inventory</option>
+                </select>
+            {%endblock%}
+            <h4><span class="label label-default">Period-end Accrual</span></h4>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked="checked" > No
+                </label>
+            </div> <!-- form-group -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary text-center">Submit</button>
+                </div>
+             </form>
+        </div>
+    {% endblock %}
 
 
 {% block body_block %}
-	<div class="panel panel-primary">
-	 	<div class="panel-heading">
-	 		<h1 class="panel-title" style="font-size:30px">P2P Accounting</h1>
-	 	</div>
-	 </div>
-	 	<form method="post" action="/p2p_accounting/?">
-	 		{% csrf_token %} {{form.item_type.choices}}
-			{{form}}  <br> 
-				{% for id, name in form.item_type.field.choices %}
-				        <option value="{{ id }}">{{ name }}</option>
-				        {% endfor %}
-			<input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
-			<p> </p>
-		</form>
-	<div id = 'options'>
-		
-	</div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title" style="font-size:30px">P2P Accounting</h1>
+        </div>
+     </div>
+        <form method="post" action="/p2p_accounting/?">
+            {% csrf_token %} {{form.item_type.choices}}
+            {{form}}  <br> 
+                {% for id, name in form.item_type.field.choices %}
+                        <option value="{{ id }}">{{ name }}</option>
+                        {% endfor %}
+            <input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
+            <p> </p>
+        </form>
+    <div id = 'options'>
+        
+    </div>
 
-	<div id = 'main-container'>
-		
-		<div id = 'accounting_enty'>
-			<div id = 'header'> </div>
-			<div id = 'entry'>
-				<div class="panel panel-primary">
-				
-				 	<div class="panel panel-info">
-				 		<div class="panel-heading">
-				 			<h3 class="panel-title">PO Receipt</h3>
-				 		</div>
-						<table class="table table-bordered table-hover">
-							{% if po_receipt_accting%} 
-								{% include "p2p/p2p_accting_header.html"%}
-							
-								{% for entry in po_receipt_accting %}
-								    {% include "p2p/p2p_accting_entry.html"%}
-								{% endfor %}
-							{%else%} 
-								{% include "no_accounting.html" %}	
-							{%endif%}
-						</table>
-					</div>
-					<div class="panel panel-info">
-					 	<div class="panel-heading">
-					 		<h3 class="panel-title">PO Deliver</h3>
-					 	</div>
-						<table class="table table-bordered table-hover">
-							{% if po_receipt_accting%} 
-								{% include "p2p/p2p_accting_header.html"%}
-								{% for entry in po_deliver_accting %}
-								    {% include "p2p/p2p_accting_entry.html"%}
-								{% endfor %}
-							{%else%} 
-								{% include "no_accounting.html" %}	
-							{%endif%}
-						</table>
-					</div>
-					<div class="panel panel-info">
-					 	<div class="panel-heading">
-					 		<h3 class="panel-title">AP Invoice</h3>
-					 	</div>
-						<table class="table table-bordered table-hover">
-							{% include "p2p/p2p_accting_header.html"%}
-							{% for entry in ap_invoice_accting %}
-    							     {% include "p2p/p2p_accting_entry.html"%}
-							{% endfor %}
-						</table>
-					</div>
-					<div class="panel panel-info">
-					 	<div class="panel-heading">
-					 		<h3 class="panel-title">AP Payment</h3>
-					 	</div>
-						<table class="table table-bordered table-hover">
-							{% include "p2p/p2p_accting_header.html"%}
-            							{% for entry in ap_payment_accting %}
+    <div id = 'main-container'>
+        
+        <div id = 'accounting_enty'>
+            <div id = 'header'> </div>
+            <div id = 'entry'>
+                <div class="panel panel-primary">
+                
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">PO Receipt</h3>
+                        </div>
+                        <table class="table table-bordered table-hover">
+                            {% if po_receipt_accting%} 
+                                {% include "p2p/p2p_accting_header.html"%}
+                            
+                                {% for entry in po_receipt_accting %}
+                                    {% include "p2p/p2p_accting_entry.html"%}
+                                {% endfor %}
+                            {%else%} 
+                                {% include "no_accounting.html" %}  
+                            {%endif%}
+                        </table>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">PO Deliver</h3>
+                        </div>
+                        <table class="table table-bordered table-hover">
+                            {% if po_receipt_accting%} 
+                                {% include "p2p/p2p_accting_header.html"%}
+                                {% for entry in po_deliver_accting %}
+                                    {% include "p2p/p2p_accting_entry.html"%}
+                                {% endfor %}
+                            {%else%} 
+                                {% include "no_accounting.html" %}  
+                            {%endif%}
+                        </table>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">AP Invoice</h3>
+                        </div>
+                        <table class="table table-bordered table-hover">
+                            {% include "p2p/p2p_accting_header.html"%}
+                            {% for entry in ap_invoice_accting %}
+                                     {% include "p2p/p2p_accting_entry.html"%}
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">AP Payment</h3>
+                        </div>
+                        <table class="table table-bordered table-hover">
+                            {% include "p2p/p2p_accting_header.html"%}
+                                        {% for entry in ap_payment_accting %}
                                                                                                 {% include "p2p/p2p_accting_entry.html"%}
-							{% endfor %}
-						</table>
-					</div>
-				</div>
-				</div>	
-			</div>  <!-- id =accounting_entry-->
-	</div>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                </div>  
+            </div>  <!-- id =accounting_entry-->
+    </div>
 {% endblock %}
