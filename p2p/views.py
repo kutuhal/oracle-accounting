@@ -10,17 +10,22 @@ def p2p_accounting(request):
         if form.is_valid(): # All validation rules pass
             item_type_val = form.cleaned_data ['item_type']
             print(item_type_val )
+            period_end_accrual_val = form.cleaned_data ['period_end_accrual']
+            print(period_end_accrual_val    )
         else:
             #this is fallback and usually not used since we are using 'Choices' in our form
             item_type_val ='Expense'
     else:
         #Initial load when the request != POST (e.g. GET)
         form=P2PForm()
-        #setting item type to Expense
+        #setting item type to Expense for a != POST (e.g. GET)
         item_type_val ='Expense'
-    receipt_accting = P2P_accounting.objects.filter( accounting_entry='PO Receipt').filter(item_type=item_type_val)
-    deliver_accting = P2P_accounting.objects.filter( accounting_entry='PO Deliver').filter(item_type=item_type_val)
-    invoice_accting = P2P_accounting.objects.filter( accounting_entry='AP Invoice')
+        period_end_accrual_val =False
+    receipt_accting = P2P_accounting.objects.filter( 
+            accounting_entry='PO Receipt').filter(item_type=item_type_val).filter (period_end_accrual=period_end_accrual_val)
+    deliver_accting = P2P_accounting.objects.filter( 
+        accounting_entry='PO Deliver').filter(item_type=item_type_val)
+    invoice_accting = P2P_accounting.objects.filter( accounting_entry='AP Invoice').filter(period_end_accrual=period_end_accrual_val)
     payment_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment')
     
     return render(request, 'p2p/p2p_accounting.html',
