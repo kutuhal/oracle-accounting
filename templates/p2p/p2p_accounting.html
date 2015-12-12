@@ -10,12 +10,19 @@
 			<div class="form-group text-center">
 			<h4><span class="label label-default">Item Type</span> </h4>
 			 {% block item_type%}
-			 <select class="form-control">
-				  <option selected="selected">Expense</option>
-				  <option>Inventory</option>
-			</select>
+				 <select class="form-control">
+					  <option selected="selected">Expense</option>
+					  <option>Inventory</option>
+				</select>
 			{%endblock%}
-			</div>
+			<h4><span class="label label-default">Period-end Accrual</span></h4>
+				<label class="radio-inline">
+				  	<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
+				</label>
+				<label class="radio-inline">
+				  	<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked="checked" > No
+				</label>
+			</div> <!-- form-group -->
 				<div class="text-center">
 			 		<button type="submit" class="btn btn-primary text-center">Submit</button>
 			 	</div>
@@ -30,7 +37,6 @@
 	 		<h1 class="panel-title" style="font-size:30px">P2P Accounting</h1>
 	 	</div>
 	 </div>
-	 
 	<div id = 'options'>
 		
 	</div>
