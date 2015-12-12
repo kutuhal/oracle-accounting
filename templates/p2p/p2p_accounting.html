@@ -63,20 +63,10 @@
 				 		</div>
 						<table class="table table-bordered table-hover">
 							{% if po_receipt_accting%} 
-								<tr>
-									<th class="col-md-2">Debit / Credit</th>
-									<th class="col-md-5">Account Description</th>
-									<th class="col-md-2">Entry for</th>
-									<th class="col-md-3"> Item Type</th>	
-								</tr>
+								{% include "p2p/p2p_accting_header.html"%}
 							
 								{% for entry in po_receipt_accting %}
-								<tr>
-									<td>{{entry.dr_cr}}</td>
-									<td>{{entry.account_description}}</td>
-									<td>{{entry.accounting_entry}}</td>
-									<td>{{entry.item_type}}</td>
-								</tr>
+								    {% include "p2p/p2p_accting_entry.html"%}
 								{% endfor %}
 							{%else%} 
 								{% include "no_accounting.html" %}	
@@ -91,12 +81,7 @@
 							{% if po_receipt_accting%} 
 								{% include "p2p/p2p_accting_header.html"%}
 								{% for entry in po_deliver_accting %}
-								<tr>
-									<td class="col-md-2">{{entry.dr_cr}}</td>
-									<td>{{entry.account_description}}</td>
-									<td>{{entry.accounting_entry}}</td>
-									<td>{{entry.item_type}}</td>
-								</tr>
+								    {% include "p2p/p2p_accting_entry.html"%}
 								{% endfor %}
 							{%else%} 
 								{% include "no_accounting.html" %}	
@@ -110,12 +95,7 @@
 						<table class="table table-bordered table-hover">
 							{% include "p2p/p2p_accting_header.html"%}
 							{% for entry in ap_invoice_accting %}
-							<tr>
-								<td class="col-md-2">{{entry.dr_cr}}</td>
-								<td>{{entry.account_description}}</td>
-								<td>{{entry.accounting_entry}}</td>
-								<td>{{entry.item_type}}</td>
-							</tr>
+    							     {% include "p2p/p2p_accting_entry.html"%}
 							{% endfor %}
 						</table>
 					</div>
@@ -125,13 +105,8 @@
 					 	</div>
 						<table class="table table-bordered table-hover">
 							{% include "p2p/p2p_accting_header.html"%}
-							{% for entry in ap_payment_accting %}
-							<tr>
-								<td class="col-md-2">{{entry.dr_cr}}</td>
-								<td>{{entry.account_description}}</td>
-								<td>{{entry.accounting_entry}}</td>
-								<td>{{entry.item_type}}</td>
-							</tr>
+            							{% for entry in ap_payment_accting %}
+                                                                                                {% include "p2p/p2p_accting_entry.html"%}
 							{% endfor %}
 						</table>
 					</div>
