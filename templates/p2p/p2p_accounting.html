@@ -5,9 +5,10 @@
 
     {% block upper_side_block %}
         <div>
-         <form class="form-horizontal" method="post" action="/p2p_accounting/?">
+         <form id = 'form_filter' class="form-horizontal" method="post" action="/p2p_accounting/?">
             {% csrf_token %} {{form.item_type.choices}}
             {{form}}  <br> 
+            <div id = 'error_message'> </div>
             <input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
             <p> </p>
         </form>
