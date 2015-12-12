@@ -37,6 +37,12 @@
 	 		<h1 class="panel-title" style="font-size:30px">P2P Accounting</h1>
 	 	</div>
 	 </div>
+	 	<form method="post" action="/p2p_accounting/">
+	 		{% csrf_token %}
+			{{form}}  <br>
+			<input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
+			<p> </p>
+		</form>
 	<div id = 'options'>
 		
 	</div>
