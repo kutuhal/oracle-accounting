@@ -9,7 +9,7 @@ class P2PForm(forms.ModelForm):
         ITEM_TYPES = ( ('Expense','Expense'), ('Inventory','Inventory'))    
         # Provide an association between the ModelForm and a model
         model = P2P_accounting
-        fields = ['item_type','period_end_accrual']
+        fields = ['item_type','period_end_accrual', 'allow_recon_accounting']
         widgets = {
             'item_type':  Select(choices= ITEM_TYPES),
         }

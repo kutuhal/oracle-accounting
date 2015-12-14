@@ -103,6 +103,21 @@
                             {% endfor %}
                         </table>
                     </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">AP Payment Reconciliation</h3>
+                        </div>
+                        <table class="table table-bordered table-hover">
+                            {% if ap_payment_recon_accting%} 
+                                {% include "p2p/p2p_accting_header.html"%}
+                                        {% for entry in ap_payment_recon_accting %}
+                                                                    {% include "p2p/p2p_accting_entry.html"%}
+                                        {% endfor %}
+                            {%else%} 
+                                {% include "no_accounting.html" %}  
+                            {%endif%}
+                        </table>
+                    </div>
                 </div>
                 </div>  
             </div>  <!-- id =accounting_entry-->

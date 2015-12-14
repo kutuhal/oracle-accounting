@@ -16,3 +16,7 @@ class P2P_accounting(models.Model):
                                                             default = False,
                                                             blank= False,
                                                             choices= YES_OR_NO)
+    allow_recon_accounting =  models.BooleanField(
+                                                            default = False,
+                                                            blank= False,
+                                                            choices= YES_OR_NO)
