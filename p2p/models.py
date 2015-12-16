@@ -5,6 +5,7 @@ from django.db import models
 class P2P_accounting(models.Model):
     DR_OR_CR = ( ('DEBIT','DEBIT'), ('CREDIT','CREDIT'))    
     YES_OR_NO = ((True, 'Yes'), (False, 'No'))
+    OE_LINE_FLOW = (('Bill Only', 'Bill Only'),('Bill Only with Inv Interface', 'Bill Only with Inv Interface') )
     dr_cr = models.CharField (max_length = 6, 
                                                     choices = DR_OR_CR,
                                                     blank=False)
@@ -20,3 +21,6 @@ class P2P_accounting(models.Model):
                                                             default = False,
                                                             blank= False,
                                                             choices= YES_OR_NO)
+    oe_line_flow = models.CharField (max_length= 30,
+                                                            default = 'Bill Only',
+                                                            choices= OE_LINE_FLOW)

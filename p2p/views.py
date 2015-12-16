@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import P2P_accounting
-from p2p.forms import P2PForm
+from p2p.forms import P2PForm, O2CForm
 
 # Create your views here.
 def p2p_accounting(request):
@@ -38,4 +38,5 @@ def p2p_accounting(request):
         'form': form})
 
 def o2c_accounting(request):
-    return render(request, 'p2p/o2c_accounting.html',)
+    form=O2CForm()
+    return render(request, 'p2p/o2c_accounting.html',{'form': form})
