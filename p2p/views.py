@@ -39,4 +39,18 @@ def p2p_accounting(request):
 
 def o2c_accounting(request):
     form=O2CForm()
-    return render(request, 'p2p/o2c_accounting.html',{'form': form})
+
+    #filtering the accounting entries
+    pick_confirm_accting = P2P_accounting.objects.filter( accounting_entry='Pick Confirm')
+    ship_confirm_accting = P2P_accounting.objects.filter( accounting_entry='Ship Confirm')
+    ar_revenue_recog_accting = P2P_accounting.objects.filter( accounting_entry='Revenue Recognition')
+    ar_invoice_accting = P2P_accounting.objects.filter( accounting_entry='AR Invoice')
+    std_receipt_accting = P2P_accounting.objects.filter( 
+            accounting_entry='AR Receipt')
+    ar_recon_accting = P2P_accounting.objects.filter( accounting_entry='AR Receipt Recon')
+    return render(request, 'p2p/o2c_accounting.html',
+        {'oe_pick_confirm_accting':pick_confirm_accting , 'oe_ship_confirm_accting': ship_confirm_accting, 
+        'ar_revenue_recog_accting': ar_revenue_recog_accting,
+        'ar_invoice_accting':ar_invoice_accting, 'ar_receipt_accting': std_receipt_accting, 
+        'ar_receipt_recon_accting': ar_recon_accting, 
+        'form': form})

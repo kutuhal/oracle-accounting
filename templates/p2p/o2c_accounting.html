@@ -36,7 +36,7 @@
         </div>
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="panel-title" style="font-size:20px">P2P Accounting</h2>
+            <h2 class="panel-title" style="font-size:20px">O2C Accounting</h2>
         </div>
      </div>
     <div id = 'options'>
@@ -52,14 +52,14 @@
                 
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">PO Receipt</h3>
+                            <h3 class="panel-title">Pick Confirm</h3>
                         </div>
                         <table class="table table-bordered table-hover">
-                            {% if po_receipt_accting%} 
-                                {% include "p2p/p2p_accting_header.html"%}
+                            {% if oe_pick_confirm_accting%} 
+                                {% include "p2p/o2c_accting_header.html"%}
                             
-                                {% for entry in po_receipt_accting %}
-                                    {% include "p2p/p2p_accting_entry.html"%}
+                                {% for entry in oe_pick_confirm_accting %}
+                                    {% include "p2p/o2c_accting_entry.html"%}
                                 {% endfor %}
                             {%else%} 
                                 {% include "no_accounting.html" %}  
@@ -68,13 +68,13 @@
                     </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">PO Deliver</h3>
+                            <h3 class="panel-title">Ship Confirm</h3>
                         </div>
                         <table class="table table-bordered table-hover">
-                            {% if po_receipt_accting%} 
-                                {% include "p2p/p2p_accting_header.html"%}
-                                {% for entry in po_deliver_accting %}
-                                    {% include "p2p/p2p_accting_entry.html"%}
+                            {% if oe_ship_confirm_accting%} 
+                                {% include "p2p/o2c_accting_header.html"%}
+                                {% for entry in oe_ship_confirm_accting %}
+                                    {% include "p2p/o2c_accting_entry.html"%}
                                 {% endfor %}
                             {%else%} 
                                 {% include "no_accounting.html" %}  
@@ -83,35 +83,46 @@
                     </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">AP Invoice</h3>
+                            <h3 class="panel-title">AR Invoice</h3>
                         </div>
                         <table class="table table-bordered table-hover">
-                            {% include "p2p/p2p_accting_header.html"%}
-                            {% for entry in ap_invoice_accting %}
-                                     {% include "p2p/p2p_accting_entry.html"%}
+                            {% include "p2p/o2c_accting_header.html"%}
+                            {% for entry in ar_invoice_accting %}
+                                     {% include "p2p/o2c_accting_entry.html"%}
                             {% endfor %}
                         </table>
                     </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">AP Payment</h3>
+                            <h3 class="panel-title">Revenue Recognition</h3>
                         </div>
                         <table class="table table-bordered table-hover">
-                            {% include "p2p/p2p_accting_header.html"%}
-                                        {% for entry in ap_payment_accting %}
-                                                                                                {% include "p2p/p2p_accting_entry.html"%}
+                            {% include "p2p/o2c_accting_header.html"%}
+                            {% for entry in ar_revenue_recog_accting %}
+                                     {% include "p2p/o2c_accting_entry.html"%}
                             {% endfor %}
                         </table>
                     </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">AP Payment Reconciliation</h3>
+                            <h3 class="panel-title">AR Standard Receipt</h3>
                         </div>
                         <table class="table table-bordered table-hover">
-                            {% if ap_payment_recon_accting%} 
-                                {% include "p2p/p2p_accting_header.html"%}
-                                        {% for entry in ap_payment_recon_accting %}
-                                                                    {% include "p2p/p2p_accting_entry.html"%}
+                            {% include "p2p/o2c_accting_header.html"%}
+                                        {% for entry in ar_receipt_accting %}
+                                                           {% include "p2p/o2c_accting_entry.html"%}
+                            	{% endfor %}
+                        </table>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">AR Receipt Reconciliation</h3>
+                        </div>
+                        <table class="table table-bordered table-hover">
+                            {% if ar_receipt_recon_accting%} 
+                                {% include "p2p/o2c_accting_header.html"%}
+                                        {% for entry in ar_receipt_recon_accting %}
+                                                                    {% include "p2p/o2c_accting_entry.html"%}
                                         {% endfor %}
                             {%else%} 
                                 {% include "no_accounting.html" %}  
