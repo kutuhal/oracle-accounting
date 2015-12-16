@@ -38,4 +38,4 @@ def p2p_accounting(request):
         'form': form})
 
 def o2c_accounting(request):
-    pass
+    return render(request, 'p2p/o2c_accounting.html',)
