@@ -8,8 +8,8 @@ class P2P_accounting(models.Model):
     dr_cr = models.CharField (max_length = 6, 
                                                     choices = DR_OR_CR,
                                                     blank=False)
-    account_description = models.CharField (max_length=25)
-    accounting_entry = models.CharField(max_length=15)
+    account_description = models.CharField (max_length=30)
+    accounting_entry = models.CharField(max_length=25)
     item_type = models.CharField(max_length=20)
     stream = models.CharField(max_length=5)
     period_end_accrual = models.BooleanField(

@@ -37,3 +37,5 @@ def p2p_accounting(request):
         'ap_invoice_accting':invoice_accting, 'ap_payment_accting':payment_accting,'ap_payment_recon_accting': recon_accting,
         'form': form})
 
+def o2c_accounting(request):
+    pass

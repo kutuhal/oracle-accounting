@@ -8,5 +8,5 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', TemplateView.as_view(template_name="home.html"), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^p2p_accounting/', include('p2p.urls')),
+    url(r'^', include('p2p.urls')),
 ]
