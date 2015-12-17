@@ -38,11 +38,21 @@ def p2p_accounting(request):
         'form': form})
 
 def o2c_accounting(request):
-    form=O2CForm()
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = O2CForm(request.POST)
+        if form.is_valid(): # All validation rules pass
+            oe_line_flow_val = form.cleaned_data ['oe_line_flow']
 
+    
+    else:
+        #Initial load when the request != POST (e.g. GET)
+        form=O2CForm() 
+        #setting form variables to default values for a != POST (e.g. GET request)
+        oe_line_flow_val = 'Bill Only'
     #filtering the accounting entries
-    pick_confirm_accting = P2P_accounting.objects.filter( accounting_entry='Pick Confirm')
-    ship_confirm_accting = P2P_accounting.objects.filter( accounting_entry='Ship Confirm')
+    pick_confirm_accting = P2P_accounting.objects.filter( accounting_entry='Pick Confirm'). filter(oe_line_flow= oe_line_flow_val)
+    ship_confirm_accting = P2P_accounting.objects.filter( accounting_entry='Ship Confirm'). filter(oe_line_flow= oe_line_flow_val)
     ar_revenue_recog_accting = P2P_accounting.objects.filter( accounting_entry='Revenue Recognition')
     ar_invoice_accting = P2P_accounting.objects.filter( accounting_entry='AR Invoice')
     std_receipt_accting = P2P_accounting.objects.filter( 
