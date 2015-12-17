@@ -11,3 +11,7 @@ $("#form_filter").submit(function() {
         return true;
       }
     });
+
+$("#add-field").click(function() {
+        $('#add-field-form').toggle(100)
+    });

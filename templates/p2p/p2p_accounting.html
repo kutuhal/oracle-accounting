@@ -36,11 +36,23 @@
         </div>
              <ul class="nav nav-tabs">
                   <li role="presentation" class="active">
-                            <div style="font-size:20px; padding: 10px 0px 15px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+                            <div style="font-size:22px; padding: 10px 0px 5px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
                             font-weight: 500;"> P2P Accounting </div>
                   </li>
-                  <li role="presentation" class = 'pull-right'><a href="#">Choose Fields</a></li>
+                  <li role="presentation" class = 'pull-right'><a id = 'add-field' href="#">Additional Fields</a></li>
             </ul>
+            <form class="form-inline style" id = 'add-field-form' style= 'margin: 2px 2px; display: none;'> 
+                        <label class="checkbox-inline">
+                          <input type="checkbox" id="inlineCheckbox1" value="option1"> Journal Source
+                        </label>
+                        <label class="checkbox-inline">
+                          <input type="checkbox" id="inlineCheckbox2" value="option2"> Defaults from
+                        </label>
+                        <label class="checkbox-inline">
+                          <input type="checkbox" id="inlineCheckbox3" value="option3"> Other Option
+                        </label>
+                        <input type="submit" class =' btn btn-success' name="submit" value="Add" />
+            </form>
     <div id = 'options'>
         
     </div>
