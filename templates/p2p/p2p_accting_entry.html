@@ -2,8 +2,13 @@
     <tr>
         <td>{{entry.dr_cr}}</td>
         <td>{{entry.account_description}}</td>
-        <td>{{entry.accounting_entry}}</td>
         <td>{{entry.item_type}}</td>
+        <td class = 'new-field journal-source' style = 'display: none;'>
+                Journal Source
+             </td>
+         <td class = 'new-field defaults-from' style = 'display: none;'>
+                Defaults from
+             </td>    
         <td>
         		<div class="dropdown">
 	                          <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -19,4 +24,5 @@
 	                          </ul>
                     	</div> 
              </td>
+             
     </tr>

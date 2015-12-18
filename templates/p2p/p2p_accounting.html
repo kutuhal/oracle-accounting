@@ -6,7 +6,7 @@
     {% block upper_side_block %}
         <div>
          <form id = 'form_filter' class="form-horizontal" method="post" action="/p2p_accounting/?">
-            {% csrf_token %} {{form.item_type.choices}}
+            {% csrf_token %} 
             {{form}}  <br> 
             <div id = 'error_message'> </div>
             <input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
@@ -41,7 +41,8 @@
                   </li>
                   <li role="presentation" class = 'pull-right'><a id = 'add-field' href="#">Additional Fields</a></li>
             </ul>
-            <form class="form-inline style" id = 'add-field-form' style= 'margin: 2px 2px; display: none;'> 
+            <!-- Additional fields block; Not displayed by default-->
+            <div class="form-inline style" id = 'add-field-form' style= 'margin: 2px 2px; display: none;'  > 
                         <label class="checkbox-inline">
                           <input type="checkbox" id="inlineCheckbox1" value="option1"> Journal Source
                         </label>
@@ -51,8 +52,8 @@
                         <label class="checkbox-inline">
                           <input type="checkbox" id="inlineCheckbox3" value="option3"> Other Option
                         </label>
-                        <input type="submit" class =' btn btn-success' name="submit" value="Add" />
-            </form>
+                        <input type="submit" id = 'add-field-form-btn'  class =' btn btn-success' name="submit" value="Add" />
+            </div>
     <div id = 'options'>
         
     </div>

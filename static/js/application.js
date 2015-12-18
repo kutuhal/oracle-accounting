@@ -16,6 +16,13 @@ $("#add-field").click(function() {
         $('#add-field-form').toggle(100)
     });
 
+
+// Adding fields based on choices selected
+$ ('#add-field-form-btn').click(function(event) {
+	/* Act on the event */
+	$('.new-field').show();
+});
+
 // Toggle Sidebar and increase width of main accordingly
 $('.sidebar-toggle').click(function(event) {
 	/* Act on the event */
