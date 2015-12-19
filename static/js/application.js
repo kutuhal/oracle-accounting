@@ -32,6 +32,11 @@ $ ('#add-field-form-btn').click(function(event) {
 	} else {
 		$('.defaults-from-field').hide();
 	}
+	if ($("#accting-class").is(':checked')) { 
+		$('.accting-class-field').show();
+	} else {
+		$('.accting-class-field').hide();
+	}
 });
 
 // Toggle Sidebar and increase width of main accordingly
