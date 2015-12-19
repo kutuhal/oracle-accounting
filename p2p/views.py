@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import P2P_accounting
 from p2p.forms import P2PForm, O2CForm
+from django.db.models import Q
 
 ITEM_TYPES = ( ('Expense','Expense'), ('Inventory','Inventory'))
 
@@ -35,7 +36,11 @@ def p2p_accounting(request):
             accounting_entry='PO Receipt').filter(item_type=item_type_val).filter (period_end_accrual=period_end_accrual_val)
     deliver_accting = P2P_accounting.objects.filter( 
         accounting_entry='PO Deliver').filter(item_type=item_type_val)
-    invoice_accting = P2P_accounting.objects.filter( accounting_entry='AP Invoice').filter(period_end_accrual=period_end_accrual_val)
+    # Invoice Accounting using Complex lookups with Q objects
+    invoice_accting = P2P_accounting.objects.filter(
+        Q(accounting_entry='AP Invoice'), Q(item_type=item_type_val ) | Q(item_type='Not Relevant' ),
+        Q(period_end_accrual=period_end_accrual_val)
+        )
     payment_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment').filter(allow_recon_accounting=allow_recon_accounting)
     recon_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment Reco').filter(allow_recon_accounting=allow_recon_accounting)
     
