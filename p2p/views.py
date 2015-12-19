@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import P2P_accounting
 from p2p.forms import P2PForm, O2CForm
 
+ITEM_TYPES = ( ('Expense','Expense'), ('Inventory','Inventory'))
+
 # Create your views here.
 def p2p_accounting(request):
     #Initial load when the request != POST (e.g. GET)
@@ -10,10 +12,12 @@ def p2p_accounting(request):
     item_type_val ='Expense'
     period_end_accrual_val =False
     allow_recon_accounting = False
+    form.fields['item_type'].choices = ITEM_TYPES # Limiting choices at GET
 
     # A HTTP POST?
     if request.method == 'POST':
         form = P2PForm(request.POST)
+        form.fields['item_type'].choices = ITEM_TYPES # Limiting choices after POST request of form
         if form.is_valid(): # All validation rules pass
 
             item_type_val = form.cleaned_data ['item_type']
