@@ -19,8 +19,19 @@ $("#add-field").click(function() {
 
 // Adding fields based on choices selected
 $ ('#add-field-form-btn').click(function(event) {
-	/* Act on the event */
-	$('.new-field').show();
+	
+	// check which journal source field is checked
+	if ($("#journal-source").is(':checked')) { 
+		$('.jrnl-source-field').show();
+	} else {
+		$('.jrnl-source-field').hide();
+	}
+	// check which journal source field is checked
+	if ($("#defaults-from").is(':checked')) { 
+		$('.defaults-from-field').show();
+	} else {
+		$('.defaults-from-field').hide();
+	}
 });
 
 // Toggle Sidebar and increase width of main accordingly
