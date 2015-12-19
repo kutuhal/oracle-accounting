@@ -6,7 +6,13 @@ class P2P_accounting(models.Model):
     DR_OR_CR = ( ('DEBIT','DEBIT'), ('CREDIT','CREDIT'))    
     YES_OR_NO = ((True, 'Yes'), (False, 'No'))
     OE_LINE_FLOW = (('Bill Only', 'Bill Only'),('Bill Only with Inv Interface', 'Bill Only with Inv Interface') )
-    ITEM_TYPES = ( ('Expense','Expense'), ('Inventory','Inventory'))    
+    ITEM_TYPES = ( ('Expense','Expense'), ('Inventory','Inventory')) 
+    JOURNAL_SOURCE =  ( ('Assets','Assets'), ('Payables','Payables'),
+                                                    ('Receivables','Receivables'), ('Cost Management','Cost Management'),
+                                                    ('Treasury','Treasury') ) 
+    JOURNAL_CATEGORY = (('Payments', 'Payments'),('Standard Invoices','Standard Invoices'),
+                                                    ('Receipts','Receipts')
+                                                    )
     dr_cr = models.CharField (max_length = 6, 
                                                     choices = DR_OR_CR,
                                                     blank=False)
@@ -28,3 +34,11 @@ class P2P_accounting(models.Model):
     oe_line_flow = models.CharField (max_length= 30,
                                                             default = 'Bill Only',
                                                             choices= OE_LINE_FLOW)
+    journal_source = models.CharField (max_length= 30, null = True,
+                                                            choices= JOURNAL_SOURCE)
+    journal_category = models.CharField (max_length= 30, null = True,
+                                                            choices= JOURNAL_CATEGORY)
+    defaults_from = models.CharField (max_length= 30, null = True
+                                                            )
+    
+

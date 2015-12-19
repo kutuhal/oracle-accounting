@@ -4,11 +4,14 @@
         <td>{{entry.account_description}}</td>
         <td>{{entry.item_type}}</td>
         <td class = 'new-field jrnl-source-field'  style = 'display: none;'>
-                Journal Source
+                {{entry.journal_source}}
              </td>
          <td class = 'new-field defaults-from-field' style = 'display: none;'>
-                Defaults from
+                {{entry.defaults_from}}
              </td>    
+        <td class = 'new-field jrnl-category-field' style = 'display: none;'>
+                {{entry.journal_category}}
+             </td>   
         <td>
         		<div class="dropdown">
 	                          <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
