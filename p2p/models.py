@@ -51,7 +51,7 @@ class P2P_accounting(models.Model):
                                                     choices = DR_OR_CR,
                                                     blank=False)
     account_description = models.CharField (max_length=30)
-    accounting_entry = models.CharField(max_length=25)
+    accounting_entry = models.CharField(max_length=35)
     item_type = models.CharField(max_length=20,
                                                             choices= ITEM_TYPES,
                                                             default= 'Expense',

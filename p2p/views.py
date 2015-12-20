@@ -43,10 +43,12 @@ def p2p_accounting(request):
         )
     payment_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment').filter(allow_recon_accounting=allow_recon_accounting)
     recon_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment Reco').filter(allow_recon_accounting=allow_recon_accounting)
-    
+    pe_accrual_accting = P2P_accounting.objects.filter( 
+            accounting_entry='PO Receipt Accruals - Period End').filter(item_type=item_type_val).filter (period_end_accrual=period_end_accrual_val)
     return render(request, 'p2p/p2p_accounting.html',
         {'po_receipt_accting': receipt_accting, 'po_deliver_accting' : deliver_accting,
         'ap_invoice_accting':invoice_accting, 'ap_payment_accting':payment_accting,'ap_payment_recon_accting': recon_accting,
+        'po_pe_accrual_accting': pe_accrual_accting,
         'form': form})
 
 def o2c_accounting(request):

@@ -98,7 +98,7 @@
                     </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">AP Invoice</h3>
+                            <h3 class="panel-title">AP Invoice <small> When matched with PO/Receipt</small></h3>
                         </div>
                         <table class="table table-bordered table-hover">
                             {% include "p2p/p2p_accting_header.html"%}
@@ -133,8 +133,29 @@
                             {%endif%}
                         </table>
                     </div>
+                
+
+                    <!-- Period End Accrual -->
+                    <div> {% if po_pe_accrual_accting %} 
+                    <hr>
+                    <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">PO Receipt Accruals - Period End <small> For Uninvoiced Receipts</small></h3>
+                            </div>
+                            <table class="table table-bordered table-hover">
+                                    {% include "p2p/p2p_accting_header.html"%}
+                                            {% for entry in po_pe_accrual_accting %}
+                                                                        {% include "p2p/p2p_accting_entry.html"%}
+                                            {% endfor %}
+                                
+                            </table>
+                        </div>
+                        <p style="padding-left:8px;"> As soon as the next period is opened, <strong> Purchasing</strong> reverses the above accrual entry.</p>
+                        {%endif%}
+                    </div> <!-- Period End Accrual Accounting Entry-->
                 </div>
-                </div>  
-            </div>  <!-- id =accounting_entry-->
+                </div>
+             </div>  
+        </div>  <!-- id =accounting_entry-->
     </div>
 {% endblock %}
