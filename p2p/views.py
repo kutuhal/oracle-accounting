@@ -4,6 +4,7 @@ from p2p.forms import P2PForm, O2CForm
 from django.db.models import Q
 
 ITEM_TYPES = ( ('Expense','Expense'), ('Inventory','Inventory'))
+ACCRUE_EXP_ITEMS = (('At Receipt', 'At Receipt'), ('Period End','Period End'))
 
 # Create your views here.
 def p2p_accounting(request):
@@ -11,14 +12,16 @@ def p2p_accounting(request):
     form=P2PForm()
     #setting form variables to default values for a != POST (e.g. GET request)
     item_type_val ='Expense'
-    period_end_accrual_val =False
+    period_end_accrual_val ='At Receipt'
     allow_recon_accounting = False
     form.fields['item_type'].choices = ITEM_TYPES # Limiting choices at GET
+    form.fields['period_end_accrual'].choices = ACCRUE_EXP_ITEMS  # Limiting choices at GET
 
     # A HTTP POST?
     if request.method == 'POST':
         form = P2PForm(request.POST)
         form.fields['item_type'].choices = ITEM_TYPES # Limiting choices after POST request of form
+        form.fields['period_end_accrual'].choices = ACCRUE_EXP_ITEMS  # Limiting choices at GET
         if form.is_valid(): # All validation rules pass
 
             item_type_val = form.cleaned_data ['item_type']
@@ -30,7 +33,7 @@ def p2p_accounting(request):
             #this is fallback and usually not used since we are using 'Choices' in our form
             item_type_val ='Expense'
             allow_recon_accounting = False
-            period_end_accrual_val =False
+            period_end_accrual_val ='At Receipt'
 
     receipt_accting = P2P_accounting.objects.filter( 
             accounting_entry='PO Receipt').filter(item_type=item_type_val).filter (period_end_accrual=period_end_accrual_val)
@@ -39,7 +42,7 @@ def p2p_accounting(request):
     # Invoice Accounting using Complex lookups with Q objects
     invoice_accting = P2P_accounting.objects.filter(
         Q(accounting_entry='AP Invoice'), Q(item_type=item_type_val ) | Q(item_type='Not Relevant' ),
-        Q(period_end_accrual=period_end_accrual_val)
+        (Q(period_end_accrual=period_end_accrual_val) | Q(period_end_accrual='Not Relevant'))
         )
     payment_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment').filter(allow_recon_accounting=allow_recon_accounting)
     recon_accting = P2P_accounting.objects.filter( accounting_entry='AP Payment Reco').filter(allow_recon_accounting=allow_recon_accounting)

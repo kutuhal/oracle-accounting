@@ -52,3 +52,7 @@ $('.sidebar-toggle').click(function(event) {
 	}
 	
 });
+
+$('#pe-accrual-btn').click(function(event) {
+	$('#period-end-accrual-modal').modal('show');
+});

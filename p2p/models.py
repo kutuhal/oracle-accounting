@@ -47,6 +47,8 @@ class P2P_accounting(models.Model):
                                                     # Cost Management & Purchasing
                                                     ('Purchasing Options', 'Purchasing Options'),('Receiving Options', 'Receiving Options'),
                                                     )
+    ACCRUE_EXP_ITEMS = (('At Receipt', 'At Receipt'), ('Period End','Period End'),('Not Relevant','Not Relevant')
+                                                    )
     dr_cr = models.CharField (max_length = 6, 
                                                     choices = DR_OR_CR,
                                                     blank=False)
@@ -57,10 +59,10 @@ class P2P_accounting(models.Model):
                                                             default= 'Expense',
                                                             blank= False)
     stream = models.CharField(max_length=5)
-    period_end_accrual = models.BooleanField(
-                                                            default = False,
+    period_end_accrual = models.CharField(max_length = 15,
+                                                            default = 'At Receipt',
                                                             blank= False,
-                                                            choices= YES_OR_NO)
+                                                            choices= ACCRUE_EXP_ITEMS )
     allow_recon_accounting =  models.BooleanField(
                                                             default = False,
                                                             blank= True,

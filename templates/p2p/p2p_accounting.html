@@ -7,10 +7,28 @@
         <div>
          <form id = 'form_filter' class="form-horizontal" method="post" action="/p2p_accounting/?">
             {% csrf_token %} 
-            {{form}}  <br> 
-            <div id = 'error_message'> </div>
+                {{ form.item_type.errors }}
+                {{ form.item_type.label_tag }} 
+                    <a id = 'item-type-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
+                    </a>
+                {{ form.item_type }} 
+
+                {{ form.period_end_accrual.errors }}
+                {{ form.period_end_accrual.label_tag }} 
+                    <a id = 'pe-accrual-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
+                    </a>
+                {{ form.period_end_accrual }} 
+
+                {{ form.allow_recon_accounting.errors }}
+                {{ form.allow_recon_accounting.label_tag }} 
+                    <a id = 'allow-recon-accting-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
+                    </a>
+                {{ form.allow_recon_accounting }} 
+                <br>
+           <!-- Disabled <div id = 'error_message'> </div> -->
             <input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
             <p> </p>
+
         </form>
         </div>
     {% endblock %}
@@ -150,7 +168,7 @@
                                 
                             </table>
                         </div>
-                        <p style="padding-left:8px;"> As soon as the next period is opened, <strong> Purchasing</strong> reverses the above accrual entry.</p>
+                        <p class="text-muted" style="padding-left:8px;"> As soon as the next period is opened, <strong> Purchasing</strong> reverses the above accrual entry.</p>
                         {%endif%}
                     </div> <!-- Period End Accrual Accounting Entry-->
                 </div>
@@ -158,4 +176,7 @@
              </div>  
         </div>  <!-- id =accounting_entry-->
     </div>
+    <!-- Include BS Model -->
+     {% include "p2p/acct_derivation.html"%}
+     {% include 'p2p/screen_shots.html'%}
 {% endblock %}
