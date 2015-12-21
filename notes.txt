@@ -1,0 +1,18 @@
+In Linux, UNIX and related operating systems, . denotes the current directory. Since you want to run a file in your current directory and that directory is not in your $PATH, you need the ./ bit to tell the shell where the executable is. So, ./foo means run the executable called foo that is in this directory.
+
+
+
+
+Now, make the file executable:
+
+chmod +x ~/Desktop/rsync.bash
+
+http://superuser.com/questions/665708/how-can-i-save-some-terminal-commands-as-a-file-and-run-them
+
+<div class="fieldWrapper">
+                {{ form.period_end_accrual.errors }}
+                {{ form.period_end_accrual.label_tag }} 
+                    <a id = 'pe-accrual-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> </a>
+                {{ form.period_end_accrual }} 
+
+            </div>

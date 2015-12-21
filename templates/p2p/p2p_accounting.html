@@ -7,24 +7,29 @@
         <div>
          <form id = 'form_filter' class="form-horizontal" method="post" action="/p2p_accounting/?">
             {% csrf_token %} 
-                {{ form.item_type.errors }}
-                {{ form.item_type.label_tag }} 
-                    <a id = 'item-type-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
-                    </a>
-                {{ form.item_type }} 
+                <p>
+                    {{ form.item_type.errors }}
+                    {{ form.item_type.label_tag }} 
+                        <a id = 'item-type-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
+                        </a>
+                    {{ form.item_type }} 
+                </p>
 
-                {{ form.period_end_accrual.errors }}
-                {{ form.period_end_accrual.label_tag }} 
-                    <a id = 'pe-accrual-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
-                    </a>
-                {{ form.period_end_accrual }} 
+                <p> 
+                    {{ form.period_end_accrual.errors }}
+                    {{ form.period_end_accrual.label_tag }} 
+                        <a id = 'pe-accrual-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
+                        </a>
+                    {{ form.period_end_accrual }} 
+                </p>
 
-                {{ form.allow_recon_accounting.errors }}
-                {{ form.allow_recon_accounting.label_tag }} 
-                    <a id = 'allow-recon-accting-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
-                    </a>
-                {{ form.allow_recon_accounting }} 
-                <br>
+                <p>
+                    {{ form.allow_recon_accounting.errors }}
+                    {{ form.allow_recon_accounting.label_tag }} 
+                        <a id = 'allow-recon-accting-btn' class = 'pull-right'> <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> 
+                        </a>
+                    {{ form.allow_recon_accounting }} 
+                </p>
            <!-- Disabled <div id = 'error_message'> </div> -->
             <input type="submit" class =' btn btn-primary' name="submit" value="Submit" />
             <p> </p>
@@ -54,8 +59,8 @@
         </div>
              <ul class="nav nav-tabs">
                   <li role="presentation" class="active">
-                            <div style="font-size:22px; padding: 10px 0px 5px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-                            font-weight: 500;"> Procure to Pay (P2P) Accounting </div>
+                            <h1 style="font-size:22px; padding: 10px 0px 5px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+                            font-weight: 500; margin: 0px 0px;"> Procure to Pay (P2P) Accounting </h1>
                   </li>
                   <li role="presentation" class = 'pull-right'><a id = 'add-field' href="#">Additional Fields</a></li>
             </ul>
